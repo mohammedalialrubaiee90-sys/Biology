@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشروع الأرتيميا - ثانوية الذرى</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #ffffff; --text: #1a1a1a; --card: #f8f9fa; --primary: #007bff;
+        }
+        [data-theme="dark"] {
+            --bg: #121212; --text: #ffffff; --card: #1e1e1e; --primary: #00d4ff;
+        }
+        body {
+            background-color: var(--bg); color: var(--text);
+            font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; transition: 0.3s;
+        }
+        nav {
+            display: flex; justify-content: center; background: var(--card);
+            padding: 15px; position: sticky; top: 0; gap: 15px; z-index: 1000;
+        }
+        nav button {
+            background: none; border: none; color: var(--text); cursor: pointer;
+            font-weight: bold; font-size: 14px;
+        }
+        .theme-toggle {
+            position: fixed; bottom: 20px; left: 20px; padding: 10px;
+            border-radius: 50%; border: none; background: var(--primary);
+            color: white; cursor: pointer; font-size: 20px;
+        }
+        .section {
+            display: none; max-width: 800px; margin: 40px auto;
+            padding: 30px; border-radius: 15px; background: var(--card);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .active { display: block; animation: fadeIn 0.5s; }
+        h2 { color: var(--primary); border-bottom: 2px solid var(--primary); padding-bottom: 10px; }
+        .contact-link {
+            display: inline-flex; align-items: center; gap: 10px;
+            color: var(--primary); text-decoration: none; font-size: 20px; margin-top: 20px;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <button onclick="showSection('intro')">المقدمة</button>
+        <button onclick="showSection('team')">فريق العمل</button>
+        <button onclick="showSection('importance')">الأهمية</button>
+        <button onclick="showSection('contact')">تواصل معنا</button>
+    </nav>
+
+    <div id="intro" class="section active">
+        <h2>مقدمة عن كائن الأرتيميا</h2>
+        <p>الأرتيميا (Artemia) هي كائنات قشرية تعيش في البحيرات شديدة الملوحة. تتميز بقدرتها المذهلة على النجاة في ظروف الجفاف التام من خلال ما يسمى "البيات الكامل" (Cryptobiosis).</p>
+        <p>في هذا المشروع، قمنا بإعادة تنشيط بيوض (Cysts) كانت في حالة سكون ملحي منذ الصيف الماضي، مما يثبت مرونة الحياة البيولوجية.</p>
+    </div>
+
+    <div id="team" class="section">
+        <h2>فريق العمل والإشراف</h2>
+        <p><b>صاحب الفكرة والباحث:</b> محمد علي براء صاحب الرُبيعي</p>
+        <hr>
+        <p><b>بإشراف الأساتذة الأفاضل:</b></p>
+        <ul>
+            <li>الأستاذ خالد النصراوي</li>
+            <li>الأستاذ حامد النصراوي</li>
+            <li>الأستاذ علي غصن</li>
+            <li>الأستاذ حيدر الباني</li>
+        </ul>
+    </div>
+
+    <div id="importance" class="section">
+        <h2>أهمية المشروع</h2>
+        <p>تكمن أهمية هذه الدراسة في فهم آليات الحفاظ على الحياة في الظروف القاسية، وتطبيقاتها تشمل:</p>
+        <ul>
+            <li>أبحاث الفضاء والبيات الاصطناعي.</li>
+            <li>تحسين الإنتاج الغذائي المائي.</li>
+            <li>دراسة التكيف الجيني للكائنات الحية.</li>
+        </ul>
+    </div>
+
+    <div id="contact" class="section">
+        <h2>تواصل معنا</h2>
+        <p>للمزيد من المعلومات حول المشروع التقني والبيولوجي:</p>
+        <a href="https://t.me/N40224" class="contact-link">
+            <i class="fab fa-telegram"></i> @N40224
+        </a>
+    </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <i id="theme-icon" class="fas fa-moon"></i>
+    </button>
+
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+
+        function toggleTheme() {
+            const body = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                icon.className = 'fas fa-moon';
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                icon.className = 'fas fa-sun';
+            }
+        }
+    </script>
+</body>
+</html>
